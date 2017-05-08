@@ -1,0 +1,28 @@
+version: '2'
+ 
+services:
+  web1:
+    build: ./web1
+    expose:
+      - "5000"
+
+  web2:
+    build: ./web2
+    expose:
+      - "5000"
+
+  web3:
+    build: ./web3
+    expose:
+      - "5000"
+ 
+  proxy:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    links:
+      - web1
+      - web2
+      - web3
+
+
