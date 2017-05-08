@@ -131,6 +131,6 @@ docker-compose -p "hello" up
 
 ### Problemas Encontrados
 
-* Para la configuracion de ngixn, fue complejo la configuracion de los volumenes debido a que este maneja unas carpetas de configuracion preestablecidas, que en algunas ocaciones complican el acceso y la modificacion para proceder a guardar achivos.
-* Otro de los problemas es que debido a que cada que se ejecuta el comando docker-compose up se creaban repositorios y contenedores los cuales quedaban en la memoria chache (nivel L1 o queza L2) el cual para la realización de pruebas era dificil gestionar las versiones.
+* Para la configuracion de ngixn, fue complejo la configuracion de los volumenes debido a que este maneja unas carpetas de configuracion preestablecidas, que en algunas ocaciones complican el acceso y la modificacion para proceder a guardar achivos (En proceso).
+* Otro de los problemas es que debido a que cada que se ejecuta el comando docker-compose up se creaban repositorios y contenedores los cuales quedaban en la memoria chache (nivel L1 o queza L2) el cual para la realización de pruebas era dificil gestionar las versiones. Para gestionar esta solucion en primera instancia eliminaba imagen por imagen con el comendo docker kill [ID image] pero debido a que se realizaba uno por uno al igual que docker rm [ID Image] se ejecuto el siguiente comando para ejecutar la eliminacion de todos sin que quedara en cache docker rm $(docker ps -a -q) -f
 
