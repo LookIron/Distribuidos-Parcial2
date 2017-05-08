@@ -127,7 +127,7 @@ services:
 ```python
 docker-compose -p "hello" up
 ```
-![Uploading parcial2.gif…]()
+![GitHub Logo0](Imagenes/parcial2.gif)
 
 
 
