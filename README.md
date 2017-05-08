@@ -129,5 +129,8 @@ docker-compose -p "hello" up
 ```
 ![GitHub Logo0](Imagenes/parcial2.gif)
 
+### Problemas Encontrados
 
+* Para la configuracion de ngixn, fue complejo la configuracion de los volumenes debido a que este maneja unas carpetas de configuracion preestablecidas, que en algunas ocaciones complican el acceso y la modificacion para proceder a guardar achivos.
+* Otro de los problemas es que debido a que cada que se ejecuta el comando docker-compose up se creaban repositorios y contenedores los cuales quedaban en la memoria chache (nivel L1 o queza L2) el cual para la realización de pruebas era dificil gestionar las versiones.
 
