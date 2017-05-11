@@ -15,7 +15,7 @@
 ### Objetivos
 * Realizar de forma autónoma el aprovisionamiento automático de infraestructura
 * Diagnosticar y ejecutar de forma autónoma las acciones necesarias para lograr infraestructuras estables
-* IIntegrar servicios ejecutandose en nodos distintos
+* Integrar servicios ejecutandose en nodos distintos
 
 ### Herramientas utilizadas
 * Docker
@@ -23,7 +23,7 @@
 
 ### Descripción
 En la realización del balanceador de carga se utilizó un servidor encargado de realizar 
-el balanceo este fue configurado con un contenedorcon Nginx y tres servidores web
+el balanceo este fue configurado con un contenedor Nginx y tres servidores web
 los cuales contenian con index para cargar la muestra de funcionamiento.
 
 ### Procedimiento
