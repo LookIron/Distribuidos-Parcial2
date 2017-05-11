@@ -23,12 +23,12 @@
 
 ### Descripción
 En la realización del balanceador de carga se utilizó un servidor encargado de realizar 
-el balanceo el cual fue configurado con un contenedorcon Nginx y tres servidores web
-configurados con index para cargar la muestra de funcionamiento.
+el balanceo este fue configurado con un contenedorcon Nginx y tres servidores web
+los cuales contenian con index para cargar la muestra de funcionamiento.
 
 ### Procedimiento
 
-**1) Configuracion del Dockerfile del servidor Nginx:**
+**1) Configuracion del archivo Dockerfile del servidor Nginx:**
 
 ```python
 #Se usa la imagen de nginx
@@ -49,7 +49,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 CMD service nginx start
 ```
 
-**2) Configuracion del archivo de congiguracion nginx.conf para la distribución:**
+**2) Configuración del archivo nginx.conf para la distribución:**
 ```python
 worker_processes 4;
  
@@ -78,7 +78,7 @@ http {
     }
 }
 ```
-**3) Configuracion de los servidores web, para ello se modifica el Dockerfile de las diferentes servidores web:**
+**3) Configuración de los servidores web, para ello se modifica el Dockerfile de las diferentes servidores web:**
 
 ```python
 #Se usa la imagen httpd
@@ -86,13 +86,13 @@ FROM httpd
 #Se agregar el archivo index.html el cual mostrara la informacion de la web pertinente
 ADD index.html /usr/local/apache2/htdocs/index.html
 ```
-**4) Configuracion de del archivo index.html:**
+**4) Configuración del archivo index.html:**
 Aqui se pone aquello que quiere que muestre la pagina en el navegador para este caso
 ```python
 <h1> Hello World I am a web one <h1>
 ```
 
-**5) Configuracion del docker-compose para la gestion de los contenedores:**
+**5) Configuracion del docker-compose.yml para la gestión de los contenedores:**
 ``` python
 version: '2'
 services:
