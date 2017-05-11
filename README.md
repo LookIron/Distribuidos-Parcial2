@@ -87,7 +87,7 @@ FROM httpd
 ADD index.html /usr/local/apache2/htdocs/index.html
 ```
 **4) Configuración del archivo index.html:**
-Aqui se pone aquello que quiere que muestre la pagina en el navegador para este caso
+Aquí se pone aquello que quiere que muestre la página en el navegador para este caso
 ```python
 <h1> Hello World I am a web one <h1>
 ```
@@ -132,7 +132,7 @@ docker-compose -p "hello" up
 
 ### Problemas Encontrados
 
-***Para la configuración de nginx, fue complejo la configuración de los volúmenes debido a que este maneja unas carpetas de configuración preestablecidas, que en algunas ocasiones complican el acceso y la modificación para proceder a guardar archivos. Otra de las complicaciones fue unos espacios el cual no dejaba cargar los volúmenes para solucionar el error se configuro el archivo poniendo al mismo nivel de services del archivo docker-compuse.yml la palabra volumes donde van todos los volúmenes que se desean utilizar y con esto se corrigió el error***.
-***Otro de los problemas es que debido a que cada que se ejecuta el comando “docker-compose up” se creaban repositorios y contenedores los cuales quedaban en la memoria cache (nivel L1 o quizá L2) el cual para la realización de pruebas era dificil gestionar las versiones. Para gestionar esta solución en primera instancia eliminaba imagen por imagen con el comendo, docker kill [ID image] pero debido a que se realizaba uno por uno al igual que, docker rm [ID Image] se ejecuto el siguiente comando para ejecutar la eliminación de todos sin que quedara en cache, docker rm $(docker ps -a -q) -f
+* Para la configuración de nginx, fue complejo la configuración de los volúmenes debido a que este maneja unas carpetas de configuración preestablecidas, que en algunas ocasiones complican el acceso y la modificación para proceder a guardar archivos. Otra de las complicaciones fue unos espacios el cual no dejaba cargar los volúmenes para solucionar el error se configuro el archivo poniendo al mismo nivel de services del archivo docker-compuse.yml la palabra volumes donde van todos los volúmenes que se desean utilizar y con esto se corrigió el error.
+* Otro de los problemas es que debido a que cada que se ejecuta el comando “docker-compose up” se creaban repositorios y contenedores los cuales quedaban en la memoria cache (nivel L1 o quizá L2) el cual para la realización de pruebas era dificil gestionar las versiones. Para gestionar esta solución en primera instancia eliminaba imagen por imagen con el comendo, docker kill [ID image] pero debido a que se realizaba uno por uno al igual que, docker rm [ID Image] se ejecuto el siguiente comando para ejecutar la eliminación de todos sin que quedara en cache, docker rm $(docker ps -a -q) -f
 
 
