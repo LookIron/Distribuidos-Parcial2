@@ -59,9 +59,9 @@ http {
     sendfile on;
  
     upstream app_servers {
-        server web1:80;
-        server web2:80;
-        server web3:80;
+        server web1;
+        server web2;
+        server web3;
     }
  
     server {
@@ -89,37 +89,38 @@ ADD index.html /usr/local/apache2/htdocs/index.html
 **4) Configuracion de del archivo index.html:**
 Aqui se pone aquello que quiere que muestre la pagina en el navegador para este caso
 ```python
-<h1> Hola soy la web1 <h1>
+<h1> Hello World I am a web one <h1>
 ```
 
 **5) Configuracion del docker-compose para la gestion de los contenedores:**
 ``` python
 version: '2'
-
 services:
   web1:
     build: ./web1
-    expose:
-      - "5000"
-
+    volumes:
+    - dataWeb1:/usr/local/apache2/htdocs
   web2:
     build: ./web2
-    expose:
-      - "5000"
-
+    volumes:
+    - dataWeb2:/usr/local/apache2/htdocs
   web3:
     build: ./web3
-    expose:
-      - "5000"
-
+    volumes:
+    - dataWeb3:/usr/local/apache2/htdocs
   proxy:
     build: ./nginx
     ports:
-      - "8080:80"
-    links:
-      - web1
-      - web2
-      - web3
+    - "8080:80"
+    volumes:
+    - volNgin:/etc/nginx/volNgin 
+volumes:    
+    dataWeb1: 
+    dataWeb2:
+    dataWeb3:
+    volNgin:
+    
+
  
 ```
 **6) Para la prueba de funcionamiento se ejecuto el siguiente comando:**
@@ -132,5 +133,5 @@ docker-compose -p "hello" up
 ### Problemas Encontrados
 
 * Para la configuracion de ngixn, fue complejo la configuracion de los volumenes debido a que este maneja unas carpetas de configuracion preestablecidas, que en algunas ocaciones complican el acceso y la modificacion para proceder a guardar achivos (En proceso).
-* Otro de los problemas es que debido a que cada que se ejecuta el comando docker-compose up se creaban repositorios y contenedores los cuales quedaban en la memoria chache (nivel L1 o queza L2) el cual para la realización de pruebas era dificil gestionar las versiones. Para gestionar esta solucion en primera instancia eliminaba imagen por imagen con el comendo, docker kill [ID image] pero debido a que se realizaba uno por uno al igual que, docker rm [ID Image] se ejecuto el siguiente comando para ejecutar la eliminacion de todos sin que quedara en cache, docker rm $(docker ps -a -q) -f
+* Otro de los problemas es que debido a que cada que se ejecuta el comando docker-compose up se creaban repositorios y contenedores los cuales quedaban en la memoria cache (nivel L1 o queza L2) el cual para la realización de pruebas era dificil gestionar las versiones. Para gestionar esta solucion en primera instancia eliminaba imagen por imagen con el comendo, docker kill [ID image] pero debido a que se realizaba uno por uno al igual que, docker rm [ID Image] se ejecuto el siguiente comando para ejecutar la eliminacion de todos sin que quedara en cache, docker rm $(docker ps -a -q) -f
 
