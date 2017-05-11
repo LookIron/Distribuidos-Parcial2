@@ -132,6 +132,6 @@ docker-compose -p "hello" up
 
 ### Problemas Encontrados
 
-* Para la configuracion de ngixn, fue complejo la configuracion de los volumenes debido a que este maneja unas carpetas de configuracion preestablecidas, que en algunas ocaciones complican el acceso y la modificacion para proceder a guardar achivos (En proceso).
+* Para la configuración de nginx, fue complejo la configuración de los volumenes debido a que este maneja unas carpetas de configuracion preestablecidas, que en algunas ocaciones complican el acceso y la modificacion para proceder a guardar achivos. Otra de las complicaciones fue unos espacios el cual no dejaba cargar los volumenes para solucionar el error se configuro el archivo poniendo al mismo nivel de services del archivo docker-compuse.yml la palabra volumes donde van todos los volumenes que se deseanutilizar y con esto se corrigió el error.
 * Otro de los problemas es que debido a que cada que se ejecuta el comando docker-compose up se creaban repositorios y contenedores los cuales quedaban en la memoria cache (nivel L1 o queza L2) el cual para la realización de pruebas era dificil gestionar las versiones. Para gestionar esta solucion en primera instancia eliminaba imagen por imagen con el comendo, docker kill [ID image] pero debido a que se realizaba uno por uno al igual que, docker rm [ID Image] se ejecuto el siguiente comando para ejecutar la eliminacion de todos sin que quedara en cache, docker rm $(docker ps -a -q) -f
 
