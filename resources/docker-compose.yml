@@ -1,28 +1,29 @@
-version: '2'
- 
+version: '2' 
 services:
   web1:
     build: ./web1
-    expose:
-      - "5000"
-
+    volumes:
+    - dataWeb1:/usr/local/apache2/htdocs
   web2:
     build: ./web2
-    expose:
-      - "5000"
-
+    volumes:
+    - dataWeb2:/usr/local/apache2/htdocs
   web3:
     build: ./web3
-    expose:
-      - "5000"
- 
+    volumes:
+    - dataWeb3:/usr/local/apache2/htdocs
   proxy:
     build: ./nginx
     ports:
-      - "8080:80"
-    links:
-      - web1
-      - web2
-      - web3
+    - "8080:80"
+    volumes:
+    - volNgin:/etc/nginx/volNgin
+    
+volumes:
+
+    dataWeb1:
+    dataWeb2:
+    dataWeb3:
+    volNgin:
 
 
