@@ -1,17 +1,3 @@
-### Examen 2
-
-**Universidad ICESI**  
-
-**Curso:** Sistemas Distribuidos  
-
-**Docente:** Daniel Barragán C.  
-
-**Tema:**  Automatización de infraestructura (Docker) 
-
-**Estudiante:** Esteban Camacho B.
-
-**Código:** A00320168
-
 ### Objetivos
 * Realizar de forma autónoma el aprovisionamiento automático de infraestructura
 * Diagnosticar y ejecutar de forma autónoma las acciones necesarias para lograr infraestructuras estables
